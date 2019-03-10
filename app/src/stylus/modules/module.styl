@@ -1,0 +1,121 @@
+header
+  background #333
+  color #fff
+  height $pcHeaderHeight
+  display flex
+  align-items center
+  justify-content space-between
+  padding 0 20px
+  a
+    color #fff
+  .logo
+    a
+      font-size 20px
+      letter-spacing .05em
+  .globalnavigation
+    display flex
+  
+
+.wrapper
+  $mainUpAndDownMargin = $pcHeaderHeight + $pcMainMargin * 2 + $pcFooterHeight
+  pcInner($pcMainMargin, $pcMainMargin)
+  min-height 'calc(100vh - %s)' % $mainUpAndDownMargin
+  display flex
+  justify-content space-between
+  main
+    width 65%
+    section
+      &:not(:first-of-type)
+        margin-top 30px
+      > h1
+        font-weight bold
+        font-size 26px
+        margin 0.5em 0
+      > h2
+        font-weight bold
+        font-size 22px
+        margin 0.5em 0
+      h3
+        font-weight bold
+        font-size 18px
+        margin 0.5em 0
+
+      .informationslist
+        margin-bottom 10px
+        li
+          &:not(:first-of-type)
+            margin-top 5px
+          a
+            hover()
+            display inline-flex
+            align-items center
+            time
+              background #777
+              color #fff
+              margin-right 7px
+              padding 3px
+              border-radius 3px
+              font-size 13px
+
+  aside
+    background #eee
+    border-radius 5px
+    padding 20px
+    width 30%
+    .widget
+      &:not(:first-of-type)
+        margin-top 20px
+      h2
+        font-weight bold
+        margin-bottom 5px
+        font-size 20px
+      ul
+        li
+          &:not(:first-of-type)
+            margin-top 3px
+          a
+            text-decoration: underline
+
+
+.postslist
+  li
+    &:not(:first-of-type)
+      margin-top 10px
+    a
+      display block
+      background #eee
+      padding 10px
+      border-radius 5px
+      transition .3s
+      &:hover
+        opacity 0.7
+      h2
+        font-weight bold            
+
+.categories
+  display flex
+  align-items center
+  &list
+    display flex
+    margin 5px 0
+    li
+      display inline-block
+      background #777
+      color #fff
+      font-size 10px
+      border-radius 3px
+      padding 3px
+
+      &:not(:first-of-type)
+        margin-left 5px
+      a
+        color #fff
+
+footer
+  height $pcFooterHeight
+  display flex
+  align-items center
+  justify-content center
+  background #333
+  color #fff
+  font-size 12px

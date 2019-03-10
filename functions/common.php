@@ -1,0 +1,34 @@
+<?php
+  // WordPressコアから出力されるHTMLタグをHTML5のフォーマットにする
+  add_theme_support( 'html5', array( 'search-form', 'comment-form', 'comment-list', 'gallery', 'caption' ) );
+  // titleタグを自動で出力
+  add_theme_support( 'title-tag' );
+
+  // 管理者以外のユーザーがログインしても、管理バーを表示させない
+  $current_user = wp_get_current_user();
+  if( !($current_user->ID == "1" )) {
+    add_filter('show_admin_bar', '__return_false');
+  }
+
+  // headで読み込ませるJSをfooterに移動
+  function move_scripts(){
+    remove_action('wp_head', 'wp_print_scripts');
+    remove_action('wp_head', 'wp_print_head_scripts', 9);
+    remove_action('wp_head', 'wp_enqueue_scripts', 1);
+    add_action('wp_footer', 'wp_print_scripts', 5);
+    add_action('wp_footer', 'wp_print_head_scripts', 5);
+    add_action('wp_footer', 'wp_enqueue_scripts', 5);
+  }
+  add_action( 'wp_enqueue_scripts', 'move_scripts' );
+
+  // Javascriptの読み込み設定
+  function twpp_enqueue_scripts() {
+    wp_enqueue_script( 
+      'script', 
+      get_template_directory_uri() . '/script.js',
+      array(), // このスクリプトを読み込むべき前に読み込むJS
+      false, // バージョン番号を指定するか
+      true // trueでフッターでJSを読み込む。
+    );
+  }
+  add_action( 'wp_enqueue_scripts', 'twpp_enqueue_scripts' );
