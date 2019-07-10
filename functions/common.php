@@ -3,6 +3,15 @@
   add_theme_support( 'html5', array( 'search-form', 'comment-form', 'comment-list', 'gallery', 'caption' ) );
   // titleタグを自動で出力
   add_theme_support( 'title-tag' );
+  
+  // タイトルタグを「サイト名」だけにする
+  function remove_titletag($title) {
+    if (isset($title['tagline'])) {
+      unset($title['tagline']);
+    }
+    return $title;
+  }
+  add_filter('document_title_parts','remove_titletag');
 
   // 管理者以外のユーザーがログインしても、管理バーを表示させない
   $current_user = wp_get_current_user();

@@ -3,6 +3,8 @@
   function my_meta_ogp() {
     if( is_front_page() || is_home() || is_singular() ){
       global $post;
+      
+      $templateUrl = get_template_directory_uri();
 
       // 下記の項目は任意の値を入れる。
       $default_ogp_image = '';
@@ -58,11 +60,11 @@
       $insert .= '<meta property="og:site_name" content="'.esc_attr(get_bloginfo('name')).'">' . "\n";
       $insert .= '<meta name="twitter:card" content="summary">' . "\n";
       $insert .= '<meta name="twitter:image:src" content="'.esc_url($ogp_img).'">' . "\n";
-      if ($favicon_url) {
-        $insert .= '<link rel="icon" href="' .esc_attr($favicon_url). '" type="image/x-icon">' . "\n";
+      if ($favicon_url !== '') {
+        $insert .= '<link rel="icon" href="' .$templateUrl.esc_attr($favicon_url). '" type="image/x-icon">' . "\n";
       }
-      if ($appletouchicon_url) {
-        $insert .= '<link rel="apple-touch-icon" href="' .esc_attr($appletouchicon_url). '" sizes="180x180">';
+      if ($appletouchicon_url !== '') {
+        $insert .= '<link rel="apple-touch-icon" href="' .$templateUrl.esc_attr($appletouchicon_url). '" sizes="180x180">';
       }
 
       echo $insert;
