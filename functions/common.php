@@ -33,7 +33,7 @@
   // Javascriptの読み込み設定
   function twpp_enqueue_scripts() {
     wp_enqueue_script( 
-      'script', 
+      'myscript', 
       get_template_directory_uri() . '/script.js',
       array(), // このスクリプトを読み込むべき前に読み込むJS
       false, // バージョン番号を指定するか
@@ -41,3 +41,12 @@
     );
   }
   add_action( 'wp_enqueue_scripts', 'twpp_enqueue_scripts' );
+
+  add_filter('script_loader_tag', 'add_defer', 10, 2);
+  function add_defer($tag, $handle) {
+    if($handle !== 'myscript') {
+      return $tag;
+    }
+    
+    return str_replace(' src=', ' defer src=', $tag);
+  }
