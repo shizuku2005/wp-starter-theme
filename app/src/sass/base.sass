@@ -1,16 +1,14 @@
+@charset "UTF-8"
+
 body
   font-family: "Dosis", "Helvetica Neue" , Helvetica , Arial , Verdana , Roboto , "游ゴシック" , "Yu Gothic" , "游ゴシック体" , "YuGothic" , "ヒラギノ角ゴ Pro W3" , "Hiragino Kaku Gothic Pro" , "Meiryo UI" , "メイリオ" , Meiryo , "ＭＳ Ｐゴシック" , "MS PGothic" , sans-serif
   font-size: 16px
-
-a
-  text-decoration: none
-  color: $black
 
 *, *::before, *::after
   box-sizing: border-box
 
 // selectのスタイルリセット&統一。一般的なスタイルに全ブラウザ統一される。
-// ただ、DOMの構造を以下のスタイルの構造に合わせる必要がある。具体的にはselectWrapでselectを囲む。
+// ただ、DOMの構造を以下のsassの構造に合わせる必要がある。具体的にはselectWrapでselectを囲む。
 .selectWrap
   position: relative
   display: inline-block
@@ -41,13 +39,13 @@ a
     height: 0
     border-style: solid
     border-width: 4px 4px 0 4px
-    border-color: $black transparent transparent transparent
+    border-color: #000 transparent transparent transparent
 
 .spview
   display: none
-  color: $black
+  color: #000
 
-+mediaqueryTablet()
++mediaqueryTablet
   .pcview
     display: none
   .spview

@@ -1,5 +1,9 @@
+@charset "UTF-8"
+
+// form関連のreset
+
 // input[type=search]のスタイルをリセット テキストの消去ボタンを削除
-inputSearchReset()
+=inputSearchReset
   input[type=search]
     -webkit-appearance: textfield
     &:focus
@@ -10,7 +14,7 @@ inputSearchReset()
       display: none
 
 // type=numberの矢印を消去
-inputNumberReset()
+=inputNumberReset
   input[type="number"]
     &::-webkit-inner-spin-button,
     &::-webkit-outer-spin-button
@@ -19,7 +23,7 @@ inputNumberReset()
       margin: 0
 
 // placeholderのcolor指定
-placeholderColor($color)
+=placeholderColor($color)
   &:placeholder-shown
     color: $color
   &::-webkit-input-placeholder

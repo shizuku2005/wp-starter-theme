@@ -1,27 +1,28 @@
-let gulp =  require('gulp')
-    stylus = require('gulp-stylus')
-    autoprefixer = require('gulp-autoprefixer')
-    sourcemaps = require('gulp-sourcemaps')
-    cleanCSS = require('gulp-clean-css')
-    uglify = require('gulp-uglify')
-    concat = require("gulp-concat")
-    babel = require('gulp-babel')
-    imagemin = require('gulp-imagemin')
-    pngquant = require("imagemin-pngquant")
-    mozjpeg = require('imagemin-mozjpeg')
-    plumber = require('gulp-plumber')
-    notify = require("gulp-notify")
-    changed = require('gulp-changed')
-    gulpif = require('gulp-if')
-    yargs = require('yargs').argv;
+const gulp = require('gulp')
+      sass = require('gulp-sass')
+      fibers = require('fibers')
+      autoprefixer = require('gulp-autoprefixer')
+      sourcemaps = require('gulp-sourcemaps')
+      cleanCSS = require('gulp-clean-css')
+      uglify = require('gulp-uglify')
+      concat = require("gulp-concat")
+      babel = require('gulp-babel')
+      imagemin = require('gulp-imagemin')
+      pngquant = require("imagemin-pngquant")
+      mozjpeg = require('imagemin-mozjpeg')
+      plumber = require('gulp-plumber')
+      notify = require("gulp-notify")
+      changed = require('gulp-changed')
+      gulpif = require('gulp-if')
+      yargs = require('yargs').argv;
 
-let src = {
-  'styles': ['./src/stylus/style.styl'],
+const src = {
+  'styles': ['./src/sass/styles.+(sass|scss)'],
   'images': ['./src/**/*.+(jpg|jpeg|png|gif|svg|ico)'],
   'js': './src/js/**/*.js',
 }
 
-let dest = {
+const dest = {
   'root': '../'
 }
 
@@ -33,13 +34,15 @@ gulp.task('environment', (done) =>  {
   done();
 });
 
-let env = environment;
+sass.compiler = require('sass');
 gulp.task('styles', () =>  {
   return gulp.src(src.styles)
     .pipe(plumber({errorHandler: notify.onError('Error: <%= error.message %>')}))
-    .pipe(stylus({define:{env}}))
+    .pipe(sass(
+      { outputStyle: 'expanded' },
+      { fibers: fibers }
+    ))
     .pipe(autoprefixer({
-      browsers: ['last 2 version'],
       grid: true
     }))
     .pipe(gulpif(isProduction, cleanCSS()))
@@ -83,7 +86,7 @@ gulp.task('imagemin', () => {
 })
 
 gulp.task('default', gulp.parallel(gulp.series('styles', 'javascript', 'imagemin'), () =>  {
-  gulp.watch('./src/stylus/**/*.styl', gulp.series('styles'))
+  gulp.watch('./src/sass/styles.+(sass|scss)', gulp.series('styles'))
   gulp.watch('./src/js/**/*.js', gulp.series('javascript'))
   gulp.watch('./src/img/**/*.+(jpg|jpeg|png|gif|svg|ico)', gulp.series('imagemin'))
 }))

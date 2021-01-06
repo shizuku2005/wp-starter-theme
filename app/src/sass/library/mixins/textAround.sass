@@ -1,4 +1,25 @@
-// テキスト周り用mixin
+@charset "UTF-8"
+
+// テキスト周り用mixin。
+
+// line-heightの最初の行の調整用mixin。$lineHeightの引数をpxで指定したい場合は$fontSizeにfont-sizeを入れる。
+=lineHeightCrop($lineHeight, $fontSize: "")
+  $argumentUnit: unit($lineHeight)
+  @if $argumentUnit == "px" and $fontSize > $lineHeight
+    @error "$fontSizeの値は$lineHeightの値より小さい値を入れてください。"
+  
+  line-height: $lineHeight
+  &::before
+    content: ''
+    display: block
+    height: 0
+    width: 0
+
+    @if ($argumentUnit == "px")
+      margin-top: ($lineHeight - $fontSize) / -2
+    @else
+      margin-top: ((1 - $lineHeight) / 2) + em
+
 
 // ol>liタグなどで、自動的に要素に順番に番号を振っていく。dl>dtなどにも使える。
 // beforeとafter
@@ -16,49 +37,50 @@
 //  ・upper-alpha - 大文字のアルファベット (A, B, C, D, E 等)
 //  ・upper-roman - 大文字のローマ数字 (I, II, III, IV, V 等)
 //  他にもいくつかあるが、恐らく使わない為、省略
-autoNumbering($incrementer = items, $target = "li", $shifter = true, $fontSize = inherit, $startText = "", $endText = ".", $space = 20px, $topPosition = 0, $leftPosition = 0, $counterType = decimal, $startNumber = 0, $increase = 1, $beforeOrAfter = before)
+=autoNumbering($incrementer: items, $target: "li", $shifter: true, $fontSize: inherit, $startText: "", $endText: ".", $space: 20px, $topPosition: 0, $leftPosition: 0, $counterType: decimal, $startNumber: 0, $increase: 1, $beforeOrAfter: before)
+  %counterStyle
+    font-size: $fontSize
+    counter-increment: $incrementer $increase
+    content: $startText counter(#{$incrementer}, #{$counterType}) $endText
+
   counter-reset: $incrementer $startNumber
 
-  > {$target}
-    if $beforeOrAfter == before
-      if $shifter
+  > #{$target}
+    @if $beforeOrAfter == before
+      @if $shifter
         position: relative
         padding-left: $space
 
       &::before
-        font-size: $fontSize
-        counter-increment: $incrementer $increase
-        content: $startText counter($incrementer, $counterType) $endText
+        @extend %counterStyle
 
-        if $shifter
+        @if $shifter
           position: absolute
           top: $topPosition
           left: $leftPosition
-        else
+        @else
           margin-right: $space
 
-    if $beforeOrAfter == after
+    @if $beforeOrAfter == after
       &::after
-        font-size: $fontSize
-        counter-increment: $incrementer $increase
-        content: $startText counter($incrementer, $counterType) $endText
+        @extend %counterStyle
 
         margin-left: $space
 
 // アンチエイリアス
-antialiased()
+=antialiased
   -webkit-font-smoothing: antialiased
   -moz-osx-font-smoothing: grayscale
 
 // 文字にグラデーション
-gradientText($angle = 45deg, $color = #f00, $amount = 50%)
+=gradientText($angle: 45deg, $color: #f00, $amount: 50%)
   color: $color
   background: -webkit-linear-gradient($angle, $color, adjust-hue($color, $amount))
   -webkit-text-fill-color: transparent
   -webkit-background-clip: text
 
 // 単数行三点リーダ
-ellipsis($width = 100%)
+=ellipsis($width: 100%)
   width: $width
   max-width: 100%
   display: block
@@ -67,7 +89,7 @@ ellipsis($width = 100%)
   text-overflow: ellipsis
 
 // 複数行三点リーダ スタイルによっては上手くいかないので、引数など上手く使い調整する
-multilineEllipsis($fontSize = 14px, $lineHeight = 1.3, $lines = 2, $bg = #fff)
+=multilineEllipsis($fontSize: 14px, $lineHeight: 1.3, $lines: 2, $bg: #fff)
   // Reset
   overflow: hidden
   width: 100%
@@ -96,7 +118,7 @@ multilineEllipsis($fontSize = 14px, $lineHeight = 1.3, $lines = 2, $bg = #fff)
       background: $bg
       transform: skew(-50deg) translateX(-0.05em)
 
-  +mediaqueryTablet()
+  +mediaqueryTablet
     > p
       &::before
         box-shadow: $bg -2px 0 3px 0px

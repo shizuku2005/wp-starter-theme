@@ -1,3 +1,5 @@
+@charset "UTF-8"
+
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -34,12 +36,12 @@ main
   //IEバグ対策
   display: block
 
-a
-  &:active, &:hover
-    outline: 0
-
 ol, ul
   list-style: none
+
+a
+  text-decoration: none
+  color: #000
 
 blockquote, q
   quotes: none
@@ -68,7 +70,7 @@ input, button, textarea, select
   margin: 0
   padding: 0
   background: none
-  border: 1px solid $black
+  border: 1px solid #000
   border-radius: 0
   outline: none
 
