@@ -86,9 +86,9 @@ gulp.task('imagemin', () => {
 })
 
 gulp.task('default', gulp.parallel(gulp.series('styles', 'javascript', 'imagemin'), () =>  {
-  gulp.watch('./src/sass/styles.+(sass|scss)', gulp.series('styles'))
-  gulp.watch('./src/js/**/*.js', gulp.series('javascript'))
-  gulp.watch('./src/img/**/*.+(jpg|jpeg|png|gif|svg|ico)', gulp.series('imagemin'))
+  gulp.watch('./src/sass/**/*.+(sass|scss)', gulp.task('styles'))
+  gulp.watch('./src/js/**/*.js', gulp.task('javascript'))
+  gulp.watch('./src/img/**/*.+(jpg|jpeg|png|gif|svg|ico)', gulp.task('imagemin'))
 }))
 
 gulp.task('build', gulp.series(gulp.parallel('styles','javascript','imagemin')))
