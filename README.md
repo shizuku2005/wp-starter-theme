@@ -9,7 +9,6 @@
 ## ファイル構成について
 - Wordpressを構築する上で、必要だと思われるものを一通り揃えました。あとは、作っていくページなどに合わせてカスタマイズしていってください。
 - `style.css`と`script.js`と`img/`は基本的に`app/src`配下の各ディレクトリから出力しています。gulpで構成していますが、この辺も自由にカスタマイズしてください。gulpなどのファイル群に関しては、こちらのリポジトリが最新です → https://github.com/shizuku2005/gulp-pug-sass/tree/feature/use-stylus
-- 初期スタイル(CSS)は`app/src/stylus/modules/module.styl`に記載してあるので、消すなりカスタマイズするなりしてください。
 - `functions.php`はファイルを分割して読み込ませていて、`functions`ディレクトリ配下から、それぞれ読み込ませています。
 - カスタム投稿機能を実装しています。`functions/posts.php`,`single-information.php`などのファイルが関連ファイルとなります。
 
