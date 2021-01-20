@@ -17,7 +17,7 @@ const gulp = require('gulp')
       yargs = require('yargs').argv;
 
 const src = {
-  'styles': ['./src/sass/styles.+(sass|scss)'],
+  'styles': ['./src/sass/style.+(sass|scss)'],
   'images': ['./src/**/*.+(jpg|jpeg|png|gif|svg|ico)'],
   'js': './src/js/**/*.js',
 }
