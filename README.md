@@ -6,6 +6,10 @@
 製作者Webページ https://kazuma-takeda.com/
 製作者SNS https://twitter.com/pianojazz2012
 
+## 注意！
+nodeのバージョンは、` v14.16.0`推奨です。
+v15系では動作しない可能性があります。
+
 ## ファイル構成について
 - Wordpressを構築する上で、必要だと思われるものを一通り揃えました。あとは、作っていくページなどに合わせてカスタマイズしていってください。
 - `style.css`と`script.js`と`img/`は基本的に`app/src`配下の各ディレクトリから出力しています。gulpで構成していますが、この辺も自由にカスタマイズしてください。gulpなどのファイル群に関しては、こちらのリポジトリが最新です → https://github.com/shizuku2005/gulp-pug-sass/tree/feature/use-stylus
