@@ -15,7 +15,7 @@
         <?php while ( $my_query->have_posts() ) : $my_query->the_post(); ?>
           <li>
             <a href="<?php the_permalink(); ?>">
-              <time><?php the_date( 'Y/m/d' ); ?></time>
+              <time datetime="<?php echo get_the_date( 'Y-m-d' ); ?>"><?php echo get_the_date( 'Y/m/d' ); ?></time>
               <p><?php the_title(); ?></p>
             </a>
           </li>
