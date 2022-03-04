@@ -1,6 +1,6 @@
 <?php
   // 「記事」の自動整形を無効化（pタグなどを消す）
-  remove_filter('the_content', 'wpautop');
+  // remove_filter('the_content', 'wpautop');
   // 「抜粋」の自動整形を無効化（pタグなどを消す）
   remove_filter('the_excerpt', 'wpautop');
   // 投稿機能画面でアイキャッチ画像の有効化
