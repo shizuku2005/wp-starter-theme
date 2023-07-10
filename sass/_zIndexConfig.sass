@@ -1,0 +1,8 @@
+// -- -- z-indexの管理 -- --
+$z-map: header
+
+@function z($name)
+  @return index($z-map, $name)
+// 使用例
+// z-index: z(header); // 1
+

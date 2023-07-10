@@ -1,11 +1,10 @@
-@charset "UTF-8"
+@use 'mediaQuery' as mq
 
 =pcInner($marginTop: 0, $marginBottom: 0, $paddingSide: 20px, $paddingUpdown: 0px)
-  width: 100%
-  max-width: $pcWidth
+  width: min(100%, $pcWidth + $paddingSide * 2)
   margin: $marginTop auto $marginBottom
   padding: 0 $paddingSide
-  +mediaqueryTablet
+  +mq.mediaqueryTablet
     padding-right: 0
     padding-left: 0
 

@@ -2,6 +2,8 @@
 
 <div class="wrapper">
   <main>
+    <!--
+    お知らせ（information）のカスタム投稿があった場合の呼び出し  
     <?php
       $args = array(
         'post_type' => 'information', // カスタム投稿名
@@ -22,7 +24,7 @@
         <?php endwhile; ?>
       </ul>
       <?php wp_reset_postdata(); ?>
-    </section>
+    </section> -->
 
     <section>
       <h2>最近の投稿</h2>

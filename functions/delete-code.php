@@ -1,5 +1,5 @@
 <?php
-  // jQueryの読み込みを解除する
+  // jQueryの読み込みを解除する。ただし、プラグインなどによっては書かないほうがいいかもしれません。
   function my_delete_local_jquery() {wp_deregister_script('jquery');}
   add_action( 'wp_enqueue_scripts', 'my_delete_local_jquery' );
 

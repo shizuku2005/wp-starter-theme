@@ -1,5 +1,3 @@
-@charset "UTF-8"
-
 // テキスト周り用mixin。
 
 // line-heightの最初の行の調整用mixin。$lineHeightの引数をpxで指定したい場合は$fontSizeにfont-sizeを入れる。
@@ -87,40 +85,3 @@
   overflow: hidden
   white-space: nowrap
   text-overflow: ellipsis
-
-// 複数行三点リーダ スタイルによっては上手くいかないので、引数など上手く使い調整する
-=multilineEllipsis($fontSize: 14px, $lineHeight: 1.3, $lines: 2, $bg: #fff)
-  // Reset
-  overflow: hidden
-  width: 100%
-  text-align: justify
-  > p:first-child
-    font-size: $fontSize
-    height: $fontSize * $lineHeight * $lines
-    line-height: $lineHeight
-    overflow: hidden
-    position: relative
-    &::before,
-    &::after
-      position: absolute
-
-    &::before
-      content: "..."
-      top: $fontSize * $lineHeight * ($lines - 1)
-      right: 0
-      background: $bg
-      padding-left: .1em
-      box-shadow: $bg -3px 0 5px 0px
-    &::after
-      content: ""
-      height: 100%
-      width: 100%
-      background: $bg
-      transform: skew(-50deg) translateX(-0.05em)
-
-  +mediaqueryTablet
-    > p
-      &::before
-        box-shadow: $bg -2px 0 3px 0px
-      &::after
-        transform: skew(-50deg) translateX(-0.2em)

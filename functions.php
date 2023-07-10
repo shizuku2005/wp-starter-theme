@@ -3,7 +3,6 @@
   get_template_part( 'functions/common' );
   get_template_part( 'functions/display' );
   get_template_part( 'functions/custom-menu' );
-  get_template_part( 'functions/posts' );
   get_template_part( 'functions/search' );
   get_template_part( 'functions/sidebar' );
   get_template_part( 'functions/delete-code' );
