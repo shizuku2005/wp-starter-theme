@@ -1,7 +1,7 @@
 <?php get_header(); ?>
 <div class="wrapper">
   <main>
-    <h1 class="<?php echo esc_html(get_queried_object() -> slug); ?>"><?php single_cat_title(); ?> カテゴリー記事の一覧</h1>
+    <h1 class="<?php echo get_queried_object() -> slug; ?>"><?php single_cat_title(); ?> カテゴリー記事の一覧</h1>
     
     <div class="postslist">
       <ul>

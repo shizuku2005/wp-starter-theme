@@ -40,7 +40,7 @@
                     $i = 0;
                     foreach ($category as $cat) {
                       $i++;
-                      echo '<li class="'.esc_html($cat->slug).'">'.esc_html($cat -> cat_name).'</li>';
+                      echo '<li class="'.$cat->slug.'">'.$cat -> cat_name.'</li>';
                     }
                   ?>
                 </ul>

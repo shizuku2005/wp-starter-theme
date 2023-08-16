@@ -3,9 +3,9 @@
 
 <div class="wrapper">
   <?php if(have_posts()): the_post(); ?>
-  <main class="<?php echo esc_html($post->post_name); ?>">
+  <main class="<?php echo $post->post_name; ?>">
 
-    <?php echo esc_url(get_the_post_thumbnail( $post->ID, 'header-image' )); ?>
+    <?php echo get_the_post_thumbnail( $post->ID, 'header-image' ); ?>
 
     <section class="section">
       <!--タイトル-->

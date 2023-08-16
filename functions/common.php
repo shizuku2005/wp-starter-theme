@@ -3,6 +3,8 @@
   add_theme_support( 'html5', array( 'search-form', 'comment-form', 'comment-list', 'gallery', 'caption' ) );
   // titleタグを自動で出力
   add_theme_support( 'title-tag' );
+      // アイキャッチ画像の有効化
+  add_theme_support('post-thumbnails');
 
   // ページタイトルとサイトのタイトルの区切り文字を変更
   function wp_document_title_separator( $separator ) {

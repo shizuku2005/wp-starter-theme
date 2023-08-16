@@ -5,7 +5,6 @@
 <head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# <?php echo $ogType; ?>: http://ogp.me/ns/<?php echo $ogType; ?>#">
   <meta charset="<?php bloginfo( 'charset' ); ?>">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
   <?php if( is_front_page() || is_home() ): ?>
     <meta name="description" content="<?php bloginfo( 'description' ); ?>">
@@ -28,7 +27,7 @@
 <body <?php echo body_class(); ?>>
   <header>
     <div class="logo">
-      <a href="<?php echo esc_url( home_url() ); ?>">
+      <a href="<?php echo home_url(); ?>">
         <?php bloginfo( 'name' ); ?>
       </a>
     </div>

@@ -55,23 +55,23 @@
 
       //出力するOGPタグ
       if( is_singular() ) {
-        $insert .= '<meta name="description" content="' .esc_attr($description). '" />' . "\n";
+        $insert .= '<meta name="description" content="' .$description. '" />' . "\n";
       }
-      $insert .= '<meta property="og:title" content="'.esc_attr($ogp_title).'">' . "\n";
-      $insert .= '<meta property="og:description" content="'.esc_attr($ogp_description).'">' . "\n";
+      $insert .= '<meta property="og:title" content="'.$ogp_title.'">' . "\n";
+      $insert .= '<meta property="og:description" content="'.$ogp_description.'">' . "\n";
       $insert .= '<meta property="og:type" content="'.$ogp_type.'">' . "\n";
-      $insert .= '<meta property="og:url" content="'.esc_url($ogp_url).'">' . "\n";
-      $insert .= '<meta property="og:site_name" content="'.esc_attr(get_bloginfo('name')).'">' . "\n";
+      $insert .= '<meta property="og:url" content="'.$ogp_url.'">' . "\n";
+      $insert .= '<meta property="og:site_name" content="'.get_bloginfo('name').'">' . "\n";
       $insert .= '<meta name="twitter:card" content="summary">' . "\n";
       if ($ogp_img !== '') {
-        $insert .= '<meta property="og:image" content="'.esc_url($ogp_img).'">' . "\n";
-        $insert .= '<meta name="twitter:image:src" content="'.esc_url($ogp_img).'">' . "\n";
+        $insert .= '<meta property="og:image" content="'.$ogp_img.'">' . "\n";
+        $insert .= '<meta name="twitter:image:src" content="'.$ogp_img.'">' . "\n";
       }
       if ($favicon_url !== '') {
-        $insert .= '<link rel="icon" href="' .$templateUrl.esc_attr($favicon_url). '" type="image/x-icon">' . "\n";
+        $insert .= '<link rel="icon" href="' .$templateUrl.$favicon_url. '" type="image/x-icon">' . "\n";
       }
       if ($appletouchicon_url !== '') {
-        $insert .= '<link rel="apple-touch-icon" href="' .$templateUrl.esc_attr($appletouchicon_url). '" sizes="180x180">';
+        $insert .= '<link rel="apple-touch-icon" href="' .$templateUrl.$appletouchicon_url. '" sizes="180x180">';
       }
 
       echo $insert;

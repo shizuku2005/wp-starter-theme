@@ -23,9 +23,9 @@
                 $category = get_the_category();
                 for ($i = 0; $i < count($category); $i++) {
                   $listStrings = '';
-                  $listStrings .= '<li class="' . esc_attr($category[$i] -> slug) . '">';
-                  $listStrings .= '<a href="' . esc_url(get_category_link( $category[$i] -> cat_ID )) . '">';
-                  $listStrings .= esc_html($category[$i] -> cat_name);
+                  $listStrings .= '<li class="' . $category[$i] -> slug . '">';
+                  $listStrings .= '<a href="' . get_category_link( $category[$i] -> cat_ID ) . '">';
+                  $listStrings .= $category[$i] -> cat_name;
                   $listStrings .= '</a></li>';
                   echo $listStrings;
                 }
